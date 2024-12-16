@@ -1,0 +1,27 @@
+# Node.js
+node_modules/
+npm-debug.log
+yarn-error.log
+package-lock.json
+yarn.lock
+
+# 環境変数ファイル
+.env
+
+# ビルド出力
+dist/
+build/
+
+# IDEやエディタの設定ファイル
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# OSのファイル
+.DS_Store
+Thumbs.db
+
+# その他
+coverage/
+*.log

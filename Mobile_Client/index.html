@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Controller</title>
+  </head>
+  <body>
+    <div id="status">Connecting...</div>
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+      const socket = io("http://172.24.81.51:3000");
+
+      socket.on("connect", () => {
+        console.log("Connected to server");
+        document.getElementById("status").textContent = "Connected!";
+
+        // 接続後すぐにモバイルクライアントとして登録
+        socket.emit("register", { clientType: "mobile" });
+      });
+
+      socket.on("connect_error", (error) => {
+        console.error("Connection error:", error);
+        document.getElementById("status").textContent = "Connection Error!";
+      });
+
+      socket.on("disconnect", () => {
+        console.log("Disconnected from server");
+        document.getElementById("status").textContent = "Disconnected!";
+      });
+    </script>
+  </body>
+</html>
